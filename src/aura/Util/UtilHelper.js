@@ -52,33 +52,47 @@
     },
 
     /*******************************************************************************************************
+    * @description determines the current state of the deduced urlObjectComponents, establishes the next step for processing to land correct URL_Router_Setting__mdt record
+    * @param urlObjectComponents    -   a list of raw URL components
+    * @return a URL_Router_Setting__mdt record
+    */
+    __determineStateOfUrlComponent: function (urlObjectComponents) {
+        if (urlObjectComponents.community === null) {
+            //    completely broken, can't even find a community
+            console.log('UtilHelper.js ::', 'completely broken, can\'t even find a community');
+            return -1;
+        }
+        if (urlObjectComponents.hash !== null && urlObjectComponents.page === null) {
+            //    has hash, no page, we are rendering urls for the default page
+            console.log('UtilHelper.js ::', 'has hash, no page, we are rendering urls for the default page');
+            return;
+        } else if (urlObjectComponents.hash !== null && urlObjectComponents.page !== null) {
+            //    has hash, has page, normal rendering to page and hash
+            console.log('UtilHelper.js ::', 'has hash, has page, normal rendering to page and hash');
+            return;
+        } else if (urlObjectComponents.hash === null && urlObjectComponents.page === null) {
+            //    no hash, no page, everything null, render default page for community
+            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'community');
+        } else if (urlObjectComponents.hash === null && urlObjectComponents.page !== null) {
+            //    no hash, has page, no hash, has page, so render given page for community
+            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'page');
+        }
+    },
+
+    /*******************************************************************************************************
     * @description takes a raw URL component list, and return either a corresponding URL_Router_Setting__mdt record, or a fallback option
     * @param urlObjectComponents    -   a list of raw URL components
     * @param library    -   library containing all URL_Router_Setting__mdt records
     * @return a URL_Router_Setting__mdt record
     */
     __getUrlObjectByComponents: function (urlObjectComponents, library) {
+        //IF DEFAULT FOR COMMUNITY IS TRUE, DON'T USE THE PAGE URL
         let ret = {};
         let urlDataStack = [];
         let linkObject;
         let found = false;
 
-        if (urlObjectComponents.community === null) {
-        //    completely broken, can't even find a community
-            console.log('UtilHelper.js ::', 'completely broken, can\'t even find a community');
-            return -1;
-        }
-        if (urlObjectComponents.hash === null) {
-            //    hash is null, so render default url for page
-            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'page');
-        }
-        if (urlObjectComponents.page === null) {
-        //    page is null, so render default page for community
-            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'community');
-        }
-
         while (found === false && urlObjectComponents.hash !== '') {
-            // linkObject = library.find(x => x.URL_Extension__c === urlObjectComponents.hash);
             linkObject = library.find(function (x) {
                 return x.Community__c.toLowerCase() === urlObjectComponents.community.toLowerCase() &&
                     x.Community_Page__c.toLowerCase() === urlObjectComponents.page.toLowerCase() &&
