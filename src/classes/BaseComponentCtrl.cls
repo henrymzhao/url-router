@@ -9,15 +9,23 @@ public with sharing class BaseComponentCtrl {
             'MasterLabel',
             'Active__c',
             'Aura_Component_Name__c',
+            'Community__c',
             'Community_Page__c',
             'Default_For_Page__c',
+            'Default_For_Community__c',
             'URL_Extension__c'
     };
 
+    /**
+    * @author Groundswell - Henry Zhao - henry@gscloudsolutions.com
+    * @date 11/3/2018
+    *
+    * @description Grabs and returns all settings and necessary shared data across community
+    */
     @AuraEnabled
     public static Map<String, Object> getSettings() {
         Map<String, Object> ret = new Map<String, Object>();
-        ret.put('url-router', getUrlRoutingSettings());
+        ret.put('url_router', getUrlRoutingSettings());
         return ret;
     }
 

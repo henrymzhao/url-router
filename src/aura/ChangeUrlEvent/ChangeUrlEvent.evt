@@ -1,0 +1,8 @@
+<!--
+ - Created by Henry on 11/3/2018.
+ -->
+
+<aura:event type="APPLICATION" description="ChangeUrlEvent">
+    <aura:attribute name="targetUrl" type="String" />
+    <aura:attribute name="rawData" type="String" />
+</aura:event>

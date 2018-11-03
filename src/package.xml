@@ -20,6 +20,7 @@
         <members>TestBeta</members>
         <members>TestCharlie</members>
         <members>TestBase</members>
+        <members>ChangeUrlEvent</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

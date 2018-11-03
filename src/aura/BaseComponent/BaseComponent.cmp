@@ -10,6 +10,8 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <!--4d pocket holds all settings and relevant data JSON objects across the community-->
     <aura:attribute name="pocket4d" type="Object" default="{}" />
+    <aura:attribute name="bodyContent" type="Aura.Component[]"/>
 
     <span>This is the base component</span>
+    {!v.bodyContent}
 </aura:component>
