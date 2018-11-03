@@ -1,0 +1,7 @@
+<!--
+ - Created by Henry on 11/3/2018.
+ -->
+
+<aura:component description="TestBase">
+    <span>test base component</span>
+</aura:component>

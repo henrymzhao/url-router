@@ -1,0 +1,7 @@
+<!--
+ - Created by Henry on 11/2/2018.
+ -->
+
+<aura:component description="TestAlpha">
+    <span>alpha component</span>
+</aura:component>

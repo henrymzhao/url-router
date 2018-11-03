@@ -33,11 +33,6 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Pulse</fullName>
-                    <default>true</default>
-                    <label>Pulse</label>
-                </value>
-                <value>
                     <fullName>Prospecting</fullName>
                     <default>false</default>
                     <label>Prospecting</label>
@@ -47,8 +42,28 @@
                     <default>false</default>
                     <label>Hub</label>
                 </value>
+                <value>
+                    <fullName>Home</fullName>
+                    <default>false</default>
+                    <label>Home</label>
+                </value>
+                <value>
+                    <fullName>PageAlpha</fullName>
+                    <default>false</default>
+                    <label>PageAlpha</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Default_For_Page__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field determines if the url and aura component is the default for its corresponding page.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field determines if the url and aura component is the default for its corresponding page.</inlineHelpText>
+        <label>Default For Page</label>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>URL_Extension__c</fullName>
@@ -58,7 +73,7 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>URL Extension</label>
         <length>50</length>
-        <required>true</required>
+        <required>false</required>
         <type>Text</type>
         <unique>true</unique>
     </fields>

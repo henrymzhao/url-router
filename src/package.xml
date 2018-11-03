@@ -10,6 +10,7 @@
         <members>QueryBuilder</members>
         <members>SObjectSelector</members>
         <members>StringBuilder</members>
+        <members>BaseComponentCtrl</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -18,7 +19,19 @@
         <members>TestAlpha</members>
         <members>TestBeta</members>
         <members>TestCharlie</members>
+        <members>TestBase</members>
         <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>URL_Router_Setting.TestAlpha</members>
+        <members>URL_Router_Setting.TestBase</members>
+        <members>URL_Router_Setting.TestBeta</members>
+        <members>URL_Router_Setting.TestCharlie</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>URL_Router_Setting__mdt-URL Router Setting Layout</members>
+        <name>Layout</name>
     </types>
     <version>43.0</version>
 </Package>

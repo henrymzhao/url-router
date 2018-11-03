@@ -1,0 +1,7 @@
+<!--
+ - Created by Henry on 11/2/2018.
+ -->
+
+<aura:component description="TestBeta">
+    <span>beta component</span>
+</aura:component>
