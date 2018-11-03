@@ -12,5 +12,13 @@
         <members>StringBuilder</members>
         <name>ApexClass</name>
     </types>
+    <types>
+        <members>BaseComponent</members>
+        <members>Util</members>
+        <members>TestAlpha</members>
+        <members>TestBeta</members>
+        <members>TestCharlie</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
     <version>43.0</version>
 </Package>

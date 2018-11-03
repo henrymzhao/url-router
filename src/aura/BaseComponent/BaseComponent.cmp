@@ -1,0 +1,9 @@
+<!--
+ - Created by Henry on 11/2/2018.
+ -->
+
+<aura:component description="This component handles all dynamic creation of components within a community"
+                implements="forceCommunity:availableForAllPageTypes"
+                extends="c:Util">
+
+</aura:component>
