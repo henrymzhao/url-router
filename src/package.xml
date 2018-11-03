@@ -4,5 +4,13 @@
         <members>URL_Router_Setting__mdt</members>
         <name>CustomObject</name>
     </types>
+    <types>
+        <members>CustomMetadataSelector</members>
+        <members>CustomMetadataService</members>
+        <members>QueryBuilder</members>
+        <members>SObjectSelector</members>
+        <members>StringBuilder</members>
+        <name>ApexClass</name>
+    </types>
     <version>43.0</version>
 </Package>
