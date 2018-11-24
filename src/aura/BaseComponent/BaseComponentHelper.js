@@ -10,7 +10,7 @@
                 if (res === "SUCCESS") {
                     let ret = a.getReturnValue();
                     console.log('BaseComponentHelper.js ::', ret);
-                    cmp.set('v.pocket4d', ret);
+                    cmp.set('v.doraemon', ret);
                     resolve(res);
                 } else {
                     console.log('There was an error in BaseComponentHelper.js');

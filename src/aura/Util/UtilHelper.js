@@ -52,75 +52,68 @@
     },
 
     /*******************************************************************************************************
-    * @description determines the current state of the deduced urlObjectComponents, establishes the next step for processing to land correct URL_Router_Setting__mdt record
-    * @param urlObjectComponents    -   a list of raw URL components
-    * @return a URL_Router_Setting__mdt record
-    */
-    __determineStateOfUrlComponent: function (urlObjectComponents) {
-        if (urlObjectComponents.community === null) {
-            //    completely broken, can't even find a community
-            console.log('UtilHelper.js ::', 'completely broken, can\'t even find a community');
-            return -1;
-        }
-        if (urlObjectComponents.hash !== null && urlObjectComponents.page === null) {
-            //    has hash, no page, we are rendering urls for the default page
-            console.log('UtilHelper.js ::', 'has hash, no page, we are rendering urls for the default page');
-            return;
-        } else if (urlObjectComponents.hash !== null && urlObjectComponents.page !== null) {
-            //    has hash, has page, normal rendering to page and hash
-            console.log('UtilHelper.js ::', 'has hash, has page, normal rendering to page and hash');
-            return;
-        } else if (urlObjectComponents.hash === null && urlObjectComponents.page === null) {
-            //    no hash, no page, everything null, render default page for community
-            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'community');
-        } else if (urlObjectComponents.hash === null && urlObjectComponents.page !== null) {
-            //    no hash, has page, no hash, has page, so render given page for community
-            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'page');
-        }
-    },
-
-    /*******************************************************************************************************
     * @description takes a raw URL component list, and return either a corresponding URL_Router_Setting__mdt record, or a fallback option
     * @param urlObjectComponents    -   a list of raw URL components
     * @param library    -   library containing all URL_Router_Setting__mdt records
     * @return a URL_Router_Setting__mdt record
     */
     __getUrlObjectByComponents: function (urlObjectComponents, library) {
-        //IF DEFAULT FOR COMMUNITY IS TRUE, DON'T USE THE PAGE URL
         let ret = {};
         let urlDataStack = [];
         let linkObject;
         let found = false;
 
-        while (found === false && urlObjectComponents.hash !== '') {
-            linkObject = library.find(function (x) {
-                return x.Community__c.toLowerCase() === urlObjectComponents.community.toLowerCase() &&
-                    x.Community_Page__c.toLowerCase() === urlObjectComponents.page.toLowerCase() &&
-                    x.URL_Extension__c.toLowerCase() === urlObjectComponents.hash.toLowerCase()
-            });
-            if (typeof linkObject !== 'undefined') {
-                found = true;
-            } else {
-                urlObjectComponents.hash = urlObjectComponents.hash.split('/');
-                urlDataStack.unshift(urlObjectComponents.hash.pop());
-                urlObjectComponents.hash = urlObjectComponents.hash.join('/');
-            }
+        if (urlObjectComponents.community === null) {
+        //    completely broken, can't even find a community
+            console.log('UtilHelper.js ::', 'completely broken, can\'t even find a community');
+            return -1;
         }
-        if (found === false) {
-            //    throw error, invalid URL
-            // linkObject = this.__handleInvalidUrlFallback(this.__getUrlObjectByUrl(location.pathname, location.hash, library), library);
+        if (urlObjectComponents.hash !== null && urlObjectComponents.page === null) {
+        //    has hash, no page, we are rendering urls for the default page
+            console.log('UtilHelper.js ::', 'has hash, no page, we are rendering urls for the default page');
+            return;
+        } else if (urlObjectComponents.hash !== null && urlObjectComponents.page !== null) {
+        //    has hash, has page, normal rendering to page and hash
+            console.log('UtilHelper.js ::', 'has hash, has page, normal rendering to page and hash');
+            return;
+        } else if (urlObjectComponents.hash === null && urlObjectComponents.page === null) {
+        //    no hash, no page, everything null, render default page for community
+            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'community');
+        } else if (urlObjectComponents.hash === null && urlObjectComponents.page !== null) {
+        //    no hash, has page, no hash, has page, so render given page for community
+            return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'page');
         }
-        ret.linkObject = linkObject;
-        // set urlData if exists
-        if (urlDataStack.length > 0) {
-            // urlData is the data string from url being passed to child urlObjectComponents
-            ret.urlData = urlDataStack.join('/');
-        } else {
-            ret.urlData = '';
-        }
-        ret.compiledUrlExtension = urlDataStack.length > 0 ? linkObject.URL_Extension__c + '/' + urlDataStack.join('/') : linkObject.URL_Extension__c;
 
-        return ret;
+        // while (found === false && urlObjectComponents.hash !== '') {
+        //     // linkObject = library.find(x => x.URL_Extension__c === urlObjectComponents.hash);
+        //     linkObject = library.find(function (x) {
+        //         return x.Community__c.toLowerCase() === urlObjectComponents.community.toLowerCase() &&
+        //             x.Community_Page__c.toLowerCase() === urlObjectComponents.page.toLowerCase() &&
+        //             x.URL_Extension__c.toLowerCase() === urlObjectComponents.hash.toLowerCase()
+        //     });
+        //     if (typeof linkObject !== 'undefined') {
+        //         found = true;
+        //     } else {
+        //         urlObjectComponents.hash = urlObjectComponents.hash.split('/');
+        //         urlDataStack.unshift(urlObjectComponents.hash.pop());
+        //         urlObjectComponents.hash = urlObjectComponents.hash.join('/');
+        //     }
+        // }
+        // if (found === false) {
+        //     //    throw error, invalid URL
+        //     // linkObject = this.__handleInvalidUrlFallback(this.__getUrlObjectByUrl(location.pathname, location.hash, library), library);
+        // }
+        // ret.linkObject = linkObject;
+        // // set urlData if exists
+        // if (urlDataStack.length > 0) {
+        //     // urlData is the data string from url being passed to child urlObjectComponents
+        //     ret.urlData = urlDataStack.join('/');
+        // } else {
+        //     ret.urlData = '';
+        // }
+        // ret.compiledUrlExtension = urlDataStack.length > 0 ? linkObject.URL_Extension__c + '/' + urlDataStack.join('/') : linkObject.URL_Extension__c;
+        //
+        // return ret;
     },
 
     __handleInvalidUrlFallback: function (urlComponents, library, fallback) {

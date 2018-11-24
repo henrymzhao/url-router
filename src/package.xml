@@ -28,6 +28,7 @@
         <members>URL_Router_Setting.TestBase</members>
         <members>URL_Router_Setting.TestBeta</members>
         <members>URL_Router_Setting.TestCharlie</members>
+        <members>URL_Router_Setting.AlphaBase</members>
         <name>CustomMetadata</name>
     </types>
     <types>

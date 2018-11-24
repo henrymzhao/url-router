@@ -12,7 +12,15 @@
     </values>
     <values>
         <field>Community_Page__c</field>
-        <value xsi:type="xsd:string">Home</value>
+        <value xsi:type="xsd:string">DEFAULT_HOME</value>
+    </values>
+    <values>
+        <field>Community__c</field>
+        <value xsi:type="xsd:string">urlrouting</value>
+    </values>
+    <values>
+        <field>Default_For_Community__c</field>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Default_For_Page__c</field>

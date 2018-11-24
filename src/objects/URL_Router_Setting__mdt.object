@@ -33,16 +33,6 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Prospecting</fullName>
-                    <default>false</default>
-                    <label>Prospecting</label>
-                </value>
-                <value>
-                    <fullName>Hub</fullName>
-                    <default>false</default>
-                    <label>Hub</label>
-                </value>
-                <value>
                     <fullName>Home</fullName>
                     <default>false</default>
                     <label>Home</label>
@@ -56,12 +46,43 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Default_For_Page__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field determines if the url and aura component is the default for its corresponding page.</description>
+        <fullName>Community__c</fullName>
+        <description>List of available communities for routing</description>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <inlineHelpText>This field determines if the url and aura component is the default for its corresponding page.</inlineHelpText>
+        <inlineHelpText>List of available communities for routing</inlineHelpText>
+        <label>Community</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>urlrouting</fullName>
+                    <default>true</default>
+                    <label>urlrouting</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Default_For_Community__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field determines if the record is the default for its corresponding community. WARNING: ONLY SET ONE PER COMMUNITY</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field determines if the record is the default for its corresponding community. WARNING: ONLY SET ONE PER COMMUNITY</inlineHelpText>
+        <label>Default For Community</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Default_For_Page__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field determines if the record is the default for its corresponding page. WARNING: ONLY SET ONE PER COMMUNITY PAGE</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This field determines if the record is the default for its corresponding page. WARNING: ONLY SET ONE PER COMMUNITY PAGE</inlineHelpText>
         <label>Default For Page</label>
         <type>Checkbox</type>
     </fields>

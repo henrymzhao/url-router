@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>TestBase</label>
+    <label>AlphaBase</label>
     <protected>false</protected>
     <values>
         <field>Active__c</field>
@@ -8,11 +8,11 @@
     </values>
     <values>
         <field>Aura_Component_Name__c</field>
-        <value xsi:type="xsd:string">TestBase</value>
+        <value xsi:type="xsd:string">AlphaBase</value>
     </values>
     <values>
         <field>Community_Page__c</field>
-        <value xsi:type="xsd:string">DEFAULT_HOME</value>
+        <value xsi:type="xsd:string">PageAlpha</value>
     </values>
     <values>
         <field>Community__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Default_For_Community__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Default_For_Page__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>URL_Extension__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">alpha-base</value>
     </values>
 </CustomMetadata>
