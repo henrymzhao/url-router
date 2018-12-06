@@ -17,12 +17,12 @@
     },
 
     /*******************************************************************************************************
-    * @description parses a raw URL and extracts the necessary raw components for further processing
-    * @param pathname - location.pathname
-    * @param hash   -   location.hash
-    * @return a raw list of url components, used for further processing in __getUrlObjectByComponents
-    * @example __getUrlObjectByUrl(location.pathname, location.hash, library)
-    */
+     * @description parses a raw URL and extracts the necessary raw components for further processing
+     * @param pathname - location.pathname
+     * @param hash   -   location.hash
+     * @return a raw list of url components, used for further processing in __getUrlObjectByComponents
+     * @example __getUrlObjectByUrl(location.pathname, location.hash, library)
+     */
     __getUrlObjectByUrl: function (pathname, hash) {
         let ret = {};
         let firstSplit = pathname.split('/s/');
@@ -52,11 +52,11 @@
     },
 
     /*******************************************************************************************************
-    * @description takes a raw URL component list, and return either a corresponding URL_Router_Setting__mdt record, or a fallback option
-    * @param urlObjectComponents    -   a list of raw URL components
-    * @param library    -   library containing all URL_Router_Setting__mdt records
-    * @return a URL_Router_Setting__mdt record
-    */
+     * @description takes a raw URL component list, and return either a corresponding URL_Router_Setting__mdt record, or a fallback option
+     * @param urlObjectComponents    -   a list of raw URL components
+     * @param library    -   library containing all URL_Router_Setting__mdt records
+     * @return a URL_Router_Setting__mdt record
+     */
     __getUrlObjectByComponents: function (urlObjectComponents, library) {
         let ret = {};
         let urlDataStack = [];
@@ -64,23 +64,25 @@
         let found = false;
 
         if (urlObjectComponents.community === null) {
-        //    completely broken, can't even find a community
+            //    completely broken, can't even find a community
             console.log('UtilHelper.js ::', 'completely broken, can\'t even find a community');
             return -1;
         }
         if (urlObjectComponents.hash !== null && urlObjectComponents.page === null) {
-        //    has hash, no page, we are rendering urls for the default page
+            //    has hash, no page, we are rendering urls for the default page
             console.log('UtilHelper.js ::', 'has hash, no page, we are rendering urls for the default page');
-            return;
+            return library.find(x => {
+                return (x.URL_Extension__c === urlObjectComponents.hash) && (x.Community_Page__c === 'DEFAULT_HOME');
+            });
         } else if (urlObjectComponents.hash !== null && urlObjectComponents.page !== null) {
-        //    has hash, has page, normal rendering to page and hash
+            //    has hash, has page, normal rendering to page and hash
             console.log('UtilHelper.js ::', 'has hash, has page, normal rendering to page and hash');
             return;
         } else if (urlObjectComponents.hash === null && urlObjectComponents.page === null) {
-        //    no hash, no page, everything null, render default page for community
+            //    no hash, no page, everything null, render default page for community
             return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'community');
         } else if (urlObjectComponents.hash === null && urlObjectComponents.page !== null) {
-        //    no hash, has page, no hash, has page, so render given page for community
+            //    no hash, has page, no hash, has page, so render given page for community
             return this.__handleInvalidUrlFallback(urlObjectComponents, library, 'page');
         }
 
@@ -121,10 +123,10 @@
         switch (fallback) {
             case 'community':
                 ret = library.find(x => {
-                   return x.Community__c.toLowerCase() === urlComponents.community.toLowerCase() &&
-                   x.Default_For_Community__c === true;
+                    return x.Community__c.toLowerCase() === urlComponents.community.toLowerCase() &&
+                        x.Default_For_Community__c === true;
                 });
-                break;
+                break;sdfsdfsdfsddf
             case 'page':
                 ret = library.find(x => {
                     return x.Community__c.toLowerCase() === urlComponents.community.toLowerCase() &&
